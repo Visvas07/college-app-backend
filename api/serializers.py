@@ -63,7 +63,7 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Student
         fields = [
-            'id', 'first_name', 'last_name', 'username','password', 'email', 'degree',
+            'id', 'first_name', 'last_name', 'username', 'email', 'degree',
             'mobile_no', 'gender', 'image_url','dob','blood_group','address'
             , 'total_teachers','total_courses'
         ]
@@ -93,7 +93,6 @@ class EnrollmentSerializer(serializers.ModelSerializer):
         return None
 
     def validate(self, data):
-        # Ensure student and subject are provided (although we are now getting them from the URL)
         if not data.get('student'):
             raise serializers.ValidationError({"student": "Student is required."})
         if not data.get('subject'):
