@@ -79,7 +79,8 @@ class StudentSerializer(serializers.ModelSerializer):
 
 
 class EnrollmentSerializer(serializers.ModelSerializer):
-    teacher_details = serializers.SerializerMethodField()
+    teacher_details = TeacherSerializer()
+    subject = SubjectSerializer()
 
     class Meta:
         model = models.Enrollment
